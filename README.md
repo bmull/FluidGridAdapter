@@ -6,7 +6,9 @@ A listview adapter that arranges images in a fluid grid.
 ![](resources/SampleS.png)
 <br>
 Custom cell padding and row height
+<br>
 ![](resources/SampleLarge.png)
 <br>
 Custom cell background color
+<br>
 ![](resources/SampleLoading.png)
