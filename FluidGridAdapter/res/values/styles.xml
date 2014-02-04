@@ -1,0 +1,17 @@
+<resources>
+
+    <style name="AppBaseTheme" parent="android:Theme.Light"></style>
+
+    <style name="AppTheme" parent="AppBaseTheme"></style>
+
+    <style name="SingleImage">
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:background">@color/light_gray</item>
+    </style>
+
+    <style name="ImageContainer">
+        <item name="android:background">@color/white</item>
+        <item name="android:paddingRight">@dimen/default_padding</item>
+    </style>
+
+</resources>
