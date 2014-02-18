@@ -34,3 +34,5 @@ Custom cell padding and row height
 Custom cell background color
 <br>
 ![](resources/SampleLoading.png)
+<br><br>
+Compatible with Android 4.0 and above
