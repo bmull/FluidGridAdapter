@@ -14,7 +14,7 @@ Here's using an example using a library such as <a href="https://github.com/squa
      
      
      ////////////////////////////////////////////////////////////////////////////////
-     //Query the MediaStore for device photos and build and array of ImageData objects
+     //Query the MediaStore for device photos and build an array of ImageData objects
      ////////////////////////////////////////////////////////////////////////////////
      String[] projection = { MediaStore.Images.Thumbnails._ID, MediaStore.Images.Thumbnails.DATA, MediaStore.Images.Thumbnails.HEIGHT,
 				MediaStore.Images.Thumbnails.WIDTH };
