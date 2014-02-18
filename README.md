@@ -35,7 +35,7 @@ Here's using an example using a library such as <a href="https://github.com/squa
 		}
      
      //Pass the array of ImageData objects into the adapter
-    FluidGridAdapter fluidGridAdapter = new FluidGridAdapter(this, imageDatas){
+     FluidGridAdapter fluidGridAdapter = new FluidGridAdapter(this, imageDatas){
 
 			@Override
 			protected void onSingleCellTapped(ImageData imageData) {
