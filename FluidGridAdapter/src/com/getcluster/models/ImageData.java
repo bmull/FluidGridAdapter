@@ -28,6 +28,8 @@ public class ImageData {
 
 	public ImageData(String imageUrl, int width, int height) {
 		setImageUrl(imageUrl);
+		this.width = width;
+		this.height = height;
 		float ar = (float)width / height;
 		setAspectRatio(ar);
 	}
@@ -52,15 +54,8 @@ public class ImageData {
 		return width;
 	}
 
-	public void setWidth(int width) {
-		this.width = width;
-	}
-
 	public int getHeight() {
 		return height;
 	}
 
-	public void setHeight(int height) {
-		this.height = height;
-	}
 }
