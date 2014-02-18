@@ -1,3 +1,18 @@
+/*
+ * Copyright 2014 Cluster Labs, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.getcluster.fluidgridsample;
 
 import java.io.File;
@@ -46,12 +61,9 @@ public class DevicePhotosSampleActivity extends Activity {
 	protected ArrayList<ImageData> loadDevicePhotos() {
 		String[] projection = { MediaStore.Images.Thumbnails._ID, MediaStore.Images.Thumbnails.DATA, MediaStore.Images.Thumbnails.HEIGHT,
 				MediaStore.Images.Thumbnails.WIDTH };
-		String selection = "";
 
-		Cursor cursor = getContentResolver().query(MediaStore.Images.Thumbnails.EXTERNAL_CONTENT_URI, projection, selection, null,"");
-
+		Cursor cursor = getContentResolver().query(MediaStore.Images.Thumbnails.EXTERNAL_CONTENT_URI, projection, null, null, null);
 		ArrayList<ImageData> imageDatas = new ArrayList<ImageData>();
-
 		int photoHeightIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.HEIGHT);
 		int photoWidthIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.WIDTH);
 		int fileLocationIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
@@ -65,7 +77,6 @@ public class DevicePhotosSampleActivity extends Activity {
 				ImageData imageData = new ImageData(fileLocation, photoWidth, photoHeight);
 				imageDatas.add(imageData);
 			}
-
 		}
 		cursor.close();
 
