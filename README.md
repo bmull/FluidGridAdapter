@@ -13,7 +13,9 @@ Create a FluidGridAdapter by passing in an array of objects that have:<br>
 Here's using an example using a library such as <a href="https://github.com/squareup/Picasso.git">Picasso</a>
      
      
+     ////////////////////////////////////////////////////////////////////////////////
      //Query the MediaStore for device photos and build and array of ImageData objects
+     ////////////////////////////////////////////////////////////////////////////////
      String[] projection = { MediaStore.Images.Thumbnails._ID, MediaStore.Images.Thumbnails.DATA, MediaStore.Images.Thumbnails.HEIGHT,
 				MediaStore.Images.Thumbnails.WIDTH };
 
@@ -33,8 +35,9 @@ Here's using an example using a library such as <a href="https://github.com/squa
 				imageDatas.add(imageData);
 			}
 		}
-     
+     /////////////////////////////////////////////////////////
      //Pass the array of ImageData objects into the adapter
+     /////////////////////////////////////////////////////////
      FluidGridAdapter fluidGridAdapter = new FluidGridAdapter(this, imageDatas){
 
 			@Override
