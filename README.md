@@ -12,7 +12,7 @@ Create a FluidGridAdapter by passing in an array of objects that have:<br>
 <h2>Example Usage</h2>
 Here's using an example using a library such as <a href="https://github.com/squareup/Picasso.git">Picasso</a>
      
-    FluidGridAdapter fluidLayoutAdapter = new FluidGridAdapter(this, imageContainers){
+    FluidGridAdapter fluidGridAdapter = new FluidGridAdapter(this, imageContainers){
 
 			@Override
 			protected void onSingleCellTapped(ImageData imageData) {
@@ -24,7 +24,7 @@ Here's using an example using a library such as <a href="https://github.com/squa
 				Picasso.with(context).load(photoUrl).resize(cellWidth, cellHeight).into(imageHolder);
 			}
 		};
-	listview.setAdapter(fluidLayoutAdapter);
+	listview.setAdapter(fluidGridAdapter);
 <br>
 
 Custom cell padding and row height
