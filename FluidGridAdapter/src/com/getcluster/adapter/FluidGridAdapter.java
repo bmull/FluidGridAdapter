@@ -9,6 +9,7 @@ import com.getcluster.models.ImageData;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Point;
+import android.os.Build;
 import android.util.TypedValue;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -95,20 +96,20 @@ public class FluidGridAdapter extends BaseAdapter {
 				View singleCell = LayoutInflater.from(context).inflate(R.layout.single_image_cell, null);
 				RelativeLayout imageContainer = (RelativeLayout)singleCell.findViewById(R.id.image_container);
 				ImageView photo = (ImageView)singleCell.findViewById(R.id.photo);
-				
+
 				final ImageData imageData = getItem(position).getImageDatas().get(i);
 				if(cellBackgroundColor != 0) {
 					photo.setBackgroundColor(cellBackgroundColor);
 				}
 				float aspectRatio = imageData.getAspectRatio();
 				String photoUrl = imageData.getImageUrl();
-				
+
 				int rowWidth = (int)Math.floor((rowHeight * aspectRatio));
 				LayoutParams lp = photo.getLayoutParams();
 				lp.height = rowHeight;
 				lp.width = rowWidth;
 				photo.setLayoutParams(lp);
-				
+
 				loadImageIntoView(photoUrl, rowWidth, rowHeight, photo);
 
 				LayoutParams clp = imageContainer.getLayoutParams();
@@ -124,7 +125,7 @@ public class FluidGridAdapter extends BaseAdapter {
 						onSingleCellTapped(imageData);
 					}
 				});
-				
+
 				singleCell.setPadding(0, 0, cellPadding, 0);
 				rowHolder.fluidRow.setPadding(cellPadding, cellPadding, 0, 0);
 				rowHolder.fluidRow.addView(singleCell);
@@ -135,17 +136,23 @@ public class FluidGridAdapter extends BaseAdapter {
 
 	/*
 	 * Called when the user taps on a single image cell
+	 * 
 	 * @param The image data of the cell being tapped on
 	 */
 	protected void onSingleCellTapped(ImageData imageData) {
 	}
 
 	/*
-	 * Called when the adapter is ready to load the specified image into the view
+	 * Called when the adapter is ready to load the specified image into the
+	 * view
+	 * 
 	 * @param photoUrl the url of the photo
+	 * 
 	 * @param imageWidth width of image cell
+	 * 
 	 * @param imageHeight height of image cell
-	 * @param imageHolder the view that the image should be loaded into 
+	 * 
+	 * @param imageHolder the view that the image should be loaded into
 	 */
 	protected void loadImageIntoView(String photoUrl, int cellWidth, int cellHeight, ImageView imageHolder) {
 	}
@@ -157,6 +164,7 @@ public class FluidGridAdapter extends BaseAdapter {
 	/*
 	 * calculate dimensions for the specific device
 	 */
+	@SuppressWarnings("deprecation")
 	private void calculateScreenDimensions() {
 		Display display = ((Activity)context).getWindowManager().getDefaultDisplay();
 		Point size = new Point();
@@ -166,7 +174,7 @@ public class FluidGridAdapter extends BaseAdapter {
 		cellPadding = (int)Math.ceil(initialCellPadding * one_px);
 		screenWidth = size.x - cellPadding;
 	}
-	
+
 	/*
 	 * build an array of rows that have images and dimensions of that row
 	 */
@@ -181,21 +189,8 @@ public class FluidGridAdapter extends BaseAdapter {
 			i++;
 			int totalPadding = (i - 1) * cellPadding;
 			float aspectRatio = imageData.getAspectRatio();
-			int imageWidth = imageData.getWidth();
-			int imageHeight = imageData.getHeight();
-			
-			if(aspectRatio == 0){
-				if(imageWidth == 0){
-					imageWidth = desiredRowHeight;
-				}
-				if(imageHeight == 0){
-					imageHeight = desiredRowHeight;
-				}
-				aspectRatio = (float)imageWidth / imageHeight;
-			}
-			
 			double photoWidth = aspectRatio * desiredRowHeight;
-			
+
 			photoRowWidth = photoRowWidth + photoWidth;
 			if(photoRowWidth < (screenWidth - totalPadding)) {
 				subList.add(imageData);
@@ -235,6 +230,7 @@ public class FluidGridAdapter extends BaseAdapter {
 
 	/*
 	 * set the background color of the cell shown before loading completes
+	 * 
 	 * @param the id of the color eg. R.color.white
 	 */
 	public void setCellBackgroundColor(int cellBackgroundColor) {
